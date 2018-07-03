@@ -510,7 +510,6 @@
             <option name="XML" value="true"/>
         </context>
     </template>
-
     <template name="flectra_email_template"
               value="&lt;record id=&quot;email_template_$eid$&quot; model=&quot;mail.template&quot;&gt;&#10;    &lt;field name=&quot;name&quot;&gt;$name$&lt;/field&gt;&#10;    &lt;field name=&quot;email_from&quot;&gt;$email_from$&lt;/field&gt;&#10;    &lt;field name=&quot;subject&quot;&gt;$subject$&lt;/field&gt;&#10;    &lt;field name=&quot;partner_to&quot;&gt;$partner_to$&lt;/field&gt;&#10;     &lt;field name=&quot;model_id&quot; ref=&quot;$module_name$.model_$model_name$&quot;/&gt;&#10;    &lt;field name=&quot;lang&quot;&gt;${object.partner_id.lang}&lt;/field&gt;&#10;    &lt;field name=&quot;body_html&quot;&gt;$body_html$&lt;/field&gt;&#10;&lt;/record&gt;"
               description="Define Sequence"
@@ -530,7 +529,6 @@
             <option name="XML" value="true"/>
         </context>
     </template>
-
     <template name="flectra_calendar"
               value="&lt;record id=&quot;view_$res_id$_calendar&quot; model=&quot;ir.ui.view&quot;&gt;&#10; &lt;field name=&quot;name&quot;&gt;view.$res_model$.calendar&lt;/field&gt;&#10; &lt;field name=&quot;model&quot;&gt;$res_model$&lt;/field&gt;&#10;  &lt;field name=&quot;arch&quot; type=&quot;xml&quot;&gt;&#10;   &lt;calendar string=&quot;$string$&quot; date_start=&quot;$date_start$&quot; date_delay=&quot;$date_delay$&quot;&gt;&#10;   &lt;field name=&quot;name&quot;/&gt;&#10;   &lt;/calendar&gt;&#10;  &lt;/field&gt;&#10;&lt;/record&gt;"
               description="Create Calendar View" toReformat="true" toShortenFQNames="true">
@@ -543,7 +541,6 @@
             <option name="XML" value="true"/>
         </context>
     </template>
-
     <template name="flectra_graph"
               value="&lt;record id=&quot;view_$res_id$_graph&quot; model=&quot;ir.ui.view&quot;&gt;&#10;    &lt;field name=&quot;name&quot;&gt;view.$res_model$.graph&lt;/field&gt;&#10;    &lt;field name=&quot;model&quot;&gt;$res_model$&lt;/field&gt;&#10;  &lt;field name=&quot;arch&quot; type=&quot;xml&quot;&gt;&#10;   &lt;graph string=&quot;$string$&quot; type=&quot;$type$&quot; orientation=&quot;$orientation$&quot;&gt;&#10;    &lt;field name=&quot;name&quot;/&gt;&#10;   &lt;/graph&gt;&#10; &lt;/field&gt;&#10;&lt;/record&gt;"
               description="Create Graph View" toReformat="true" toShortenFQNames="true">
@@ -556,7 +553,6 @@
             <option name="XML" value="true"/>
         </context>
     </template>
-
     <template name="flectra_pivot"
               value="&lt;record id=&quot;view_$res_id$_pivot&quot; model=&quot;ir.ui.view&quot;&gt;&#10;    &lt;field name=&quot;name&quot;&gt;view.$res_model$.pivot&lt;/field&gt;&#10;    &lt;field name=&quot;model&quot;&gt;$res_model$&lt;/field&gt;&#10;    &lt;field name=&quot;arch&quot; type=&quot;xml&quot;&gt;&#10;        &lt;pivot string=&quot;$string$&quot;&gt;&#10;            &lt;field name=&quot;name&quot;/&gt;&#10;        &lt;/pivot&gt;&#10;    &lt;/field&gt;&#10;&lt;/record&gt;"
               description="Create Pivot View" toReformat="true" toShortenFQNames="true">
@@ -567,5 +563,32 @@
             <option name="XML" value="true"/>
         </context>
     </template>
-
+    <template name="flectra_class_wizard"
+              value="class $class_code$(models.TransientModel):&#10;    _name = '$class_name$'&#10;    _description = '$description$'&#10;&#10;"
+              description="Wizard Class" toReformat="true" toShortenFQNames="true">
+        <variable name="class_code" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="class_name" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="description" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="Python" value="true"/>
+        </context>
+    </template>
+    <template name="flectra_class_report"
+              value="class $class_code$(models.AbstractModel):&#10;    _name = 'report.$module_name$.$report_name$'&#10;    _description = '$description$'&#10;"
+              description="Report Class" toReformat="true" toShortenFQNames="true">
+        <variable name="class_code" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="module_name" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="report_name" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="description" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="Python" value="true"/>
+        </context>
+    </template>
+    <template name="flectra_method_report_value"
+              value="@api.model&#10;def get_report_values(self, docids, data=None):&#10;    # Add code here  &#10;    pass"
+              description="Design Report Data" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="Python" value="true"/>
+        </context>
+    </template>
 </templateSet>
